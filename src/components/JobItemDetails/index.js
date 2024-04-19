@@ -106,26 +106,29 @@ class JobItemDetails extends Component {
     return (
       <div>
         <h1>{title}</h1>
-        <img src={companyLogoUrl} alt="logo" />
+        <img src={companyLogoUrl} alt="job details company logo" />
         <p>{rating}</p>
         <p>{employmentType}</p>
-        <h1>{packagePerAnnum}</h1>
+        <p>{packagePerAnnum}</p>
         <hr />
         <h1>Description</h1>
         <p>{jobDescription}</p>
         <p>{location}</p>
-        <a href={companyWebsiteUrl}>visit</a>
+        <h1>Life at Company</h1>
+        <a href={companyWebsiteUrl}>Visit</a>
+        <h1>Skills</h1>
 
         <ul>
           {skillsData.map(product => (
             <SkillsData product={product} key={product.name} />
           ))}
         </ul>
-        <div>
+        <ul>
           <h1>About Us</h1>
-          <img src={imageUrl} />
+          <img src={imageUrl} alt="life at company" />
           <p>{description}</p>
-        </div>
+        </ul>
+        <h1>Similar Jobs</h1>
         <ul>
           {similarJobsData.map(product => (
             <SimilarJobs product={product} key={product.id} />
@@ -136,17 +139,20 @@ class JobItemDetails extends Component {
   }
 
   renderLoadingView = () => (
-    <div className="products-loader-container">
+    <div className="products-loader-container" data-testid="loader">
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </div>
   )
 
   renderFailureView = () => (
     <div>
-      <h1>Oops! Something Went Wrong</h1>
-      <p>
-        We are having some trouble processing your request. Please try again.
-      </p>
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
+        alt="failure view"
+      />
+      <p>We cannot seem to find the page you are looking for</p>
+      <button>Retry</button>
+      {this.getJobsData()}
     </div>
   )
 

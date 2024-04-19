@@ -2,10 +2,10 @@ const SkillsData = props => {
   const {product} = props
   const {name, imageUrl} = product
   return (
-    <div>
-      <img src={imageUrl} />
+    <li>
+      <img src={imageUrl} alt={name} />
       <p>{name}</p>
-    </div>
+    </li>
   )
 }
 
