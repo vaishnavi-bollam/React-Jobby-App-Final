@@ -160,28 +160,32 @@ class Jobs extends Component {
 
     return (
       <div className="job-container">
-        <div>
-          <FiltersGroup
-            employmentTypesList={employmentTypesList}
-            changeEmployee={this.changeEmployee}
-            salaryRangesList={salaryRangesList}
-            changeSalary={this.changeSalary}
-            changeSearchInput={this.changeSearchInput}
-            enterSearchInput={this.enterSearchInput}
-            profileData={profileData}
-          />
-        </div>
-        <div>
-          {jobsData.map(each => (
-            <JobCard each={each} key={each.id} />
-          ))}
-        </div>
+        <li>
+          <ul>
+            <FiltersGroup
+              employmentTypesList={employmentTypesList}
+              changeEmployee={this.changeEmployee}
+              salaryRangesList={salaryRangesList}
+              changeSalary={this.changeSalary}
+              changeSearchInput={this.changeSearchInput}
+              enterSearchInput={this.enterSearchInput}
+              profileData={profileData}
+            />
+          </ul>
+        </li>
+        <li>
+          <ul>
+            {jobsData.map(each => (
+              <JobCard each={each} key={each.id} />
+            ))}
+          </ul>
+        </li>
       </div>
     )
   }
 
   renderLoadingView = () => (
-    <div className="products-loader-container">
+    <div className="products-loader-container" data-testid="loader">
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </div>
   )

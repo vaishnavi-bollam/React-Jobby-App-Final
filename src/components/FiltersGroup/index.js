@@ -11,9 +11,19 @@ const FiltersGroup = props => {
         changeEmployee(eachEmployeeType.employmentTypeId)
 
       return (
-        <li key={eachEmployeeType.employmentTypeId} onClick={onClickEmployItem}>
-          <p>{eachEmployeeType.employmentTypeId}</p>
-        </li>
+        <ul>
+          <li
+            key={eachEmployeeType.employmentTypeId}
+            onClick={onClickEmployItem}
+          >
+            {/* <p>{eachEmployeeType.employmentTypeId}</p> */}
+            <label htmlFor="check">
+              <input type="checkbox" id="check" />
+              {/* {eachEmployeeType.employmentTypeId} */}
+              {eachEmployeeType.label}
+            </label>
+          </li>
+        </ul>
       )
     })
   }
@@ -26,9 +36,14 @@ const FiltersGroup = props => {
       const onClickSalaryType = () => changeSalary(eachSalaryType.salaryRangeId)
 
       return (
-        <li key={eachSalaryType.salaryRangeId} onClick={onClickSalaryType}>
-          <p>{eachSalaryType.label}</p>
-        </li>
+        <ul>
+          <li key={eachSalaryType.salaryRangeId} onClick={onClickSalaryType}>
+            <label htmlFor="radio">
+              <input type="radio" id="radio" />
+              {eachSalaryType.label}
+            </label>
+          </li>
+        </ul>
       )
     })
   }
@@ -57,7 +72,7 @@ const FiltersGroup = props => {
           onChange={onChangeSearchInput}
           onKeyDown={onEnterSearchInput}
         />
-        <BsSearch className="search-icon" />
+        <BsSearch className="search-icon" data-testid="searchButton" />
       </div>
     )
   }
@@ -68,7 +83,7 @@ const FiltersGroup = props => {
     return (
       <div className="profile-container">
         <h1>{name}</h1>
-        <img src={profileImageUrl} />
+        <img src={profileImageUrl} alt="profile" />
         <p>{shortBio}</p>
       </div>
     )
@@ -78,7 +93,7 @@ const FiltersGroup = props => {
     <div>
       <ul>{renderSearchInput()}</ul>
       <div>{renderUserInfo()}</div>
-      <h1>Type of Employement</h1>
+      <h1>Type of Employment</h1>
 
       <ul>{renderEmploymentType()}</ul>
       <h1>Salary Range</h1>
